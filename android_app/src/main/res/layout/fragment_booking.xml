@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Event Title (Being Booked) -->
+    <TextView
+        android:id="@+id/textView_booking_event_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Event: Summer Music Fest"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Number of Tickets Selection -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="8dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Number of Tickets:"
+            android:textSize="16sp"/>
+
+        <Spinner
+            android:id="@+id/spinner_number_of_tickets"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:entries="@array/ticket_numbers_placeholder" /> <!-- Assume a placeholder array like 1, 2, 3, 4, 5 -->
+    </LinearLayout>
+
+    <!-- Total Price Display -->
+    <TextView
+        android:id="@+id/textView_total_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total Price: $XX.XX"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Payment Options (Conceptual) -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Payment Options:"
+        android:textSize="16sp"
+        android:layout_marginBottom="8dp"/>
+
+    <!-- Placeholder for Payment RadioGroup or similar -->
+    <RadioGroup
+        android:id="@+id/radioGroup_payment_options"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginBottom="16dp">
+
+        <RadioButton
+            android:id="@+id/radioButton_credit_card"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Credit/Debit Card (Not Implemented)"/>
+        <RadioButton
+            android:id="@+id/radioButton_paypal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PayPal (Not Implemented)"/>
+        <!-- Add more payment options as needed -->
+    </RadioGroup>
+
+    <!-- Confirm Booking Button -->
+    <Button
+        android:id="@+id/button_confirm_booking"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Confirm Booking"
+        android:layout_marginTop="16dp"/>
+
+</LinearLayout>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Search Bar / Filter Options -->
+    <LinearLayout
+        android:id="@+id/search_filter_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:layout_alignParentTop="true">
+
+        <EditText
+            android:id="@+id/editText_search_events"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Search events..."
+            android:inputType="text"/>
+
+        <Button
+            android:id="@+id/button_filter_events"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Filter"/>
+    </LinearLayout>
+
+    <!-- RecyclerView or ListView for Events -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView_event_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/search_filter_container"
+        android:padding="8dp"
+        android:scrollbars="vertical"/>
+
+    <!-- Conceptual Single List Item Layout (Not a real include, just for illustration) -->
+    <!--
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@android:drawable/dialog_holo_light_frame">
+
+        <ImageView
+            android:id="@+id/imageView_event_thumbnail"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@android:drawable/ic_menu_gallery"
+            android:scaleType="centerCrop"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginStart="10dp">
+
+            <TextView
+                android:id="@+id/textView_event_item_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Event Title Placeholder"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/textView_event_item_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Date: YYYY-MM-DD HH:MM"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:id="@+id/textView_event_item_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Location: Event Location Placeholder"
+                android:textSize="14sp"/>
+        </LinearLayout>
+    </LinearLayout>
+    -->
+
+</RelativeLayout>

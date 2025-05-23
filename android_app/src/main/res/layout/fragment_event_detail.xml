@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Event Banner Image -->
+        <ImageView
+            android:id="@+id/imageView_event_banner"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:src="@android:drawable/sym_def_app_icon" /* Placeholder image */
+            android:scaleType="centerCrop"
+            android:contentDescription="Event Banner"/>
+
+        <!-- Event Title -->
+        <TextView
+            android:id="@+id/textView_event_detail_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Event Title Placeholder"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:padding="16dp"/>
+
+        <!-- Event Description -->
+        <TextView
+            android:id="@+id/textView_event_detail_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Detailed event description placeholder. This section will contain all the information about the event, what attendees can expect, schedule, etc."
+            android:textSize="16sp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="16dp"/>
+
+        <!-- Date & Time -->
+        <TextView
+            android:id="@+id/textView_event_detail_datetime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date &amp; Time: YYYY-MM-DD HH:MM - YYYY-MM-DD HH:MM"
+            android:textSize="16sp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:drawableStart="@android:drawable/ic_menu_my_calendar" /* Placeholder icon */
+            android:drawablePadding="8dp"/>
+
+        <!-- Location -->
+        <TextView
+            android:id="@+id/textView_event_detail_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Location: Event Location Placeholder, City"
+            android:textSize="16sp"
+            android:padding="16dp"
+            android:drawableStart="@android:drawable/ic_menu_mapmode" /* Placeholder icon */
+            android:drawablePadding="8dp"/>
+
+        <!-- Organizer Info -->
+        <TextView
+            android:id="@+id/textView_event_detail_organizer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Organizer: Organizer Name Placeholder"
+            android:textSize="16sp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="8dp"/>
+
+        <!-- Price -->
+        <TextView
+            android:id="@+id/textView_event_detail_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Price: $XX.XX (or Free)"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/holo_green_dark" /* Placeholder color */
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="16dp"/>
+
+        <!-- Book Now Button -->
+        <Button
+            android:id="@+id/button_book_now"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Book Now"
+            android:layout_margin="16dp"/>
+
+    </LinearLayout>
+</ScrollView>

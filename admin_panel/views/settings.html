@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admin Panel - Application Settings</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        body {
+            display: flex;
+        }
+        #sidebar {
+            min-width: 250px;
+            max-width: 250px;
+            min-height: 100vh;
+        }
+        #sidebar.collapsed {
+            min-width: 80px;
+            max-width: 80px;
+        }
+        #sidebar .nav-link span {
+            display: inline;
+        }
+        #sidebar.collapsed .nav-link span {
+            display: none;
+        }
+        #sidebar.collapsed .nav-link .bi {
+            margin-right: 0;
+        }
+        #sidebar .nav-link {
+            padding: .5rem 1rem;
+        }
+        #sidebar.collapsed .nav-link {
+            padding: .5rem;
+            text-align: center;
+        }
+        #sidebar.collapsed .dropdown-toggle::after {
+            display: none;
+        }
+        #content {
+            flex-grow: 1;
+            padding: 20px;
+        }
+        .settings-section {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            border: 1px solid #dee2e6;
+            border-radius: .25rem;
+            background-color: #fff;
+        }
+        .settings-section h5 {
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <nav id="sidebar" class="bg-dark text-white p-3">
+        <div class="text-center mb-3">
+            <a href="./index.html" class="navbar-brand text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-speedometer2" viewBox="0 0 16 16"><path d="M8 4a.5.5 0 0 1 .5.5V6a.5.5 0 0 1-1 0V4.5A.5.5 0 0 1 8 4zM3.732 5.732a.5.5 0 0 1 .707 0l.915.914a.5.5 0 1 1-.708.708l-.914-.915a.5.5 0 0 1 0-.707zM2 10a.5.5 0 0 1 .5-.5h1.586a.5.5 0 0 1 0 1H2.5a.5.5 0 0 1-.5-.5zm9.5 0a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 0 1H12a.5.5 0 0 1-.5-.5zm.754-4.246a.389.389 0 0 0-.527-.02L7.547 9.31a.91.91 0 1 0 1.302 1.258l3.434-4.297a.389.389 0 0 0-.029-.518z"/><path fill-rule="evenodd" d="M0 10a8 8 0 1 1 15.547 2.661c-.442 1.253-1.845 1.602-2.932 1.25C11.309 13.488 9.475 13 8 13c-1.474 0-3.31.488-4.615.911-1.087.352-2.49.003-2.932-1.25A7.988 7.988 0 0 1 0 10zm8-7a7 7 0 0 0-6.603 9.329c.203.575.923.876 1.68.63C4.397 12.533 6.358 12 8 12s3.604.532 4.923.96c.757.245 1.477-.056 1.68-.631A7 7 0 0 0 8 3z"/></svg>
+                <span class="ms-2">Site Name</span>
+            </a>
+            <button class="btn btn-light d-md-none ms-auto" type="button" id="sidebarToggleMini">
+                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/></svg>
+            </button>
+        </div>
+        <button class="btn btn-light mb-3 d-none d-md-block" id="sidebarToggle">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/></svg>
+            <span class="ms-2">Toggle Sidebar</span>
+        </button>
+        <ul class="nav nav-pills flex-column mb-auto">
+            <li class="nav-item"><a href="./index.html" class="nav-link text-white"><span>Dashboard</span></a></li>
+            <li class="nav-item"><a href="./categories.html" class="nav-link text-white"><span>Categories</span></a></li>
+            <li class="nav-item"><a href="./events.html" class="nav-link text-white"><span>Events</span></a></li>
+            <li class="nav-item"><a href="./users.html" class="nav-link text-white"><span>Users</span></a></li>
+            <li class="nav-item"><a href="./sliders.html" class="nav-link text-white"><span>Sliders/Banners</span></a></li>
+            <li class="nav-item">
+                <a class="nav-link text-white dropdown-toggle" href="#contactsSubmenu" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="contactsSubmenu">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope me-2" viewBox="0 0 16 16"><path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/></svg>
+                    <span>Contacts</span>
+                </a>
+                <ul class="collapse list-unstyled" id="contactsSubmenu">
+                    <li><a href="./contact_subjects.html" class="nav-link text-white"><span>Subjects</span></a></li>
+                    <li><a href="./contacts.html" class="nav-link text-white"><span>Messages</span></a></li>
+                </ul>
+            </li>
+            <li class="nav-item"><a href="./bookings.html" class="nav-link text-white"><span>Bookings</span></a></li>
+            <li class="nav-item"><a href="./reports.html" class="nav-link text-white"><span>Reports</span></a></li>
+            <li class="nav-item"><a href="./notifications.html" class="nav-link text-white"><span>Notifications</span></a></li>
+            <li class="nav-item">
+                <a href="./settings.html" class="nav-link text-white active" aria-current="page">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear me-2" viewBox="0 0 16 16"><path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z"/><path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.902 3.433 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.159c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.318.094a1.873 1.873 0 0 0-1.116 2.693l.159.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.318a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z"/></svg>
+                    <span>Settings</span>
+                </a>
+            </li>
+        </ul>
+        <hr>
+        <div class="dropdown">
+            <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="https://via.placeholder.com/32" alt="" width="32" height="32" class="rounded-circle me-2">
+                <strong>Admin User</strong>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+                <li><a class="dropdown-item" href="#">Settings</a></li>
+                <li><a class="dropdown-item" href="#">Profile</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="./login.html">Logout</a></li>
+            </ul>
+        </div>
+         <a href="./login.html" class="nav-link text-white mt-auto">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-left me-2" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2.146a.5.5 0 0 1-1 0V3.5A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2.146a.5.5 0 0 1 1 0V12.5z"/><path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/></svg>
+            <span>Logout</span>
+        </a>
+    </nav>
+
+    <!-- Main content -->
+    <div id="content">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                 <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="#">Admin Profile</a></li>
+                        <li class="nav-item"><a class="nav-link" href="./login.html">Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Content specific to the page -->
+        <div class="container-fluid">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h2">Application Settings</h1>
+            </div>
+            
+            <div class="alert alert-warning" role="alert">
+                <strong>Placeholder Settings:</strong> Modifying these settings will not have a real effect yet. This page is for outlining available options.
+            </div>
+
+            <form id="appSettingsForm">
+                <!-- General Settings -->
+                <div class="settings-section">
+                    <h5>General Settings</h5>
+                    <div class="mb-3">
+                        <label for="siteName" class="form-label">Site Name</label>
+                        <input type="text" class="form-control" id="siteName" value="My Event App">
+                    </div>
+                    <div class="mb-3">
+                        <label for="defaultCurrency" class="form-label">Default Currency</label>
+                        <select class="form-select" id="defaultCurrency">
+                            <option value="USD" selected>USD - US Dollar</option>
+                            <option value="EUR">EUR - Euro</option>
+                            <option value="GBP">GBP - British Pound</option>
+                            <option value="JPY">JPY - Japanese Yen</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="defaultTimezone" class="form-label">Default Timezone</label>
+                        <select class="form-select" id="defaultTimezone">
+                            <option value="UTC" selected>UTC (Coordinated Universal Time)</option>
+                            <option value="America/New_York">America/New_York (EST/EDT)</option>
+                            <option value="Europe/London">Europe/London (GMT/BST)</option>
+                            <option value="Asia/Tokyo">Asia/Tokyo (JST)</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="adminEmail" class="form-label">Admin Email</label>
+                        <input type="email" class="form-control" id="adminEmail" placeholder="admin@example.com">
+                    </div>
+                </div>
+
+                <!-- Event Settings -->
+                <div class="settings-section">
+                    <h5>Event Settings</h5>
+                    <div class="mb-3">
+                        <label for="maxBookingsPerUser" class="form-label">Maximum Bookings per User (per event)</label>
+                        <input type="number" class="form-control" id="maxBookingsPerUser" value="5">
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="eventApprovalRequired" checked>
+                        <label class="form-check-label" for="eventApprovalRequired">Event Approval Required by Admin</label>
+                    </div>
+                    <div class="mb-3">
+                        <label for="defaultEventCapacity" class="form-label">Default Event Capacity</label>
+                        <input type="number" class="form-control" id="defaultEventCapacity" placeholder="e.g., 100 (leave blank for unlimited)">
+                    </div>
+                </div>
+
+                <!-- Appearance Settings -->
+                <div class="settings-section">
+                    <h5>Appearance Settings</h5>
+                    <div class="mb-3">
+                        <label for="logoUrl" class="form-label">Logo URL</label>
+                        <input type="url" class="form-control" id="logoUrl" placeholder="https://example.com/logo.png">
+                    </div>
+                    <div class="mb-3">
+                        <label for="faviconUrl" class="form-label">Favicon URL</label>
+                        <input type="url" class="form-control" id="faviconUrl" placeholder="https://example.com/favicon.ico">
+                    </div>
+                    <div class="mb-3">
+                        <label for="customCss" class="form-label">Custom CSS</label>
+                        <textarea class="form-control" id="customCss" rows="5" placeholder="/* Enter custom CSS rules here */"></textarea>
+                    </div>
+                </div>
+
+                <!-- Social Media Integration -->
+                <div class="settings-section">
+                    <h5>Social Media Integration (Placeholder)</h5>
+                    <div class="mb-3">
+                        <label for="facebookUrl" class="form-label">Facebook URL</label>
+                        <input type="url" class="form-control" id="facebookUrl" placeholder="https://facebook.com/yourpage">
+                    </div>
+                    <div class="mb-3">
+                        <label for="twitterUrl" class="form-label">Twitter URL</label>
+                        <input type="url" class="form-control" id="twitterUrl" placeholder="https://twitter.com/yourhandle">
+                    </div>
+                    <div class="mb-3">
+                        <label for="instagramUrl" class="form-label">Instagram URL</label>
+                        <input type="url" class="form-control" id="instagramUrl" placeholder="https://instagram.com/yourprofile">
+                    </div>
+                </div>
+
+                <hr class="my-4">
+                <button type="button" class="btn btn-primary btn-lg" onclick="savePlaceholderSettings()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-save-fill me-1" viewBox="0 0 16 16">
+                        <path d="M8.5 1.5A1.5 1.5 0 0 1 10 0h4a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h2.5A1.5 1.5 0 0 1 6 1.5v2.559c-.386.198-.726.456-1 .78V1.5a.5.5 0 0 0-.5-.5h-2a.5.5 0 0 0-.5.5v13a.5.5 0 0 0 .5.5h12a.5.5 0 0 0 .5-.5V2a.5.5 0 0 0-.5-.5H9.5zM7 5.5a1 1 0 0 0-1 1v1.586l-.293-.293a.5.5 0 0 0-.707.707l1.5 1.5a.5.5 0 0 0 .707 0l1.5-1.5a.5.5 0 0 0-.707-.707L8 7.086V6.5a1 1 0 0 0-1-1z"/>
+                    </svg>
+                    Save Settings
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('sidebarToggle').addEventListener('click', function () {
+            document.getElementById('sidebar').classList.toggle('collapsed');
+        });
+        const sidebarToggleMini = document.getElementById('sidebarToggleMini');
+        if(sidebarToggleMini) {
+            sidebarToggleMini.addEventListener('click', function () {
+                 document.getElementById('sidebar').classList.toggle('collapsed');
+            });
+        }
+
+        function savePlaceholderSettings() {
+            alert('Saving settings is a placeholder. This feature will be implemented later.');
+            console.log("Attempted to save application settings (conceptual).");
+            // In a real application, you would gather form data and send to server.
+            // const settingsData = {
+            //     siteName: document.getElementById('siteName').value,
+            //     // ... gather all other settings
+            // };
+            // console.log(settingsData);
+        }
+    </script>
+</body>
+</html>

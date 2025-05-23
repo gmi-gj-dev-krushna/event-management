@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Profile Picture Placeholder -->
+    <ImageView
+        android:id="@+id/imageView_profile_picture"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@android:drawable/sym_def_app_icon" /* Placeholder icon */
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="16dp"
+        android:contentDescription="User Profile Picture"/>
+
+    <!-- User's Name -->
+    <TextView
+        android:id="@+id/textView_user_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="User Name Placeholder"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="8dp"/>
+
+    <!-- User's Email -->
+    <TextView
+        android:id="@+id/textView_user_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="user.email@example.com"
+        android:textSize="16sp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="24dp"/>
+
+    <!-- Edit Profile Button -->
+    <Button
+        android:id="@+id/button_edit_profile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Edit Profile"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_marginBottom="8dp"/>
+
+    <!-- View My Bookings Option/Button -->
+    <Button
+        android:id="@+id/button_view_my_bookings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="View My Bookings"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_marginBottom="8dp"/>
+        
+    <!-- Change Password Option/Button (Conceptual) -->
+    <Button
+        android:id="@+id/button_change_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Change Password"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_marginBottom="24dp"/>
+
+    <!-- Logout Button -->
+    <Button
+        android:id="@+id/button_logout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Logout"
+        android:backgroundTint="@android:color/holo_red_light" /* Placeholder color */
+        android:textColor="@android:color/white"/>
+
+</LinearLayout>
