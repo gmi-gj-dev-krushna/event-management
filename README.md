@@ -50,15 +50,50 @@ This initial phase focuses on setting up the project structure and creating the 
 This project is currently in the initial design and UI mockup phase. The following steps are crucial for further development:
 
 **1. Admin Panel Backend Development:**
-    *   Set up a proper Node.js environment:
-        *   Create `package.json` in `admin_panel/` (`npm init -y`).
-        *   Install dependencies: `npm install express body-parser pg` (for PostgreSQL, or `mysql2`, `mongodb` etc. depending on DB choice).
-        *   Install `nodemon` for development: `npm install -D nodemon`.
-    *   Implement the API endpoints defined in `admin_panel/server.js`.
-    *   Connect to the chosen database (PostgreSQL, MongoDB, etc.) based on the schema in `database/README.md`.
-    *   Implement authentication and authorization (e.g., using JWT or sessions).
-    *   Develop business logic for all management features.
-    *   Implement file upload functionality for banners/images.
+
+    *   **Set up the Node.js Environment in `admin_panel/`:**
+        1.  Navigate to the `admin_panel` directory in your terminal.
+        2.  Initialize `package.json`:
+            ```bash
+            npm init -y
+            ```
+        3.  Install core dependencies:
+            ```bash
+            npm install express body-parser
+            ```
+        4.  Install `nodemon` for automatic server restarts during development:
+            ```bash
+            npm install -D nodemon
+            ```
+        5.  (Optional but Recommended) Add a script to your `admin_panel/package.json` for easy startup:
+            ```json
+            "scripts": {
+              "start": "node server.js", 
+              "dev": "nodemon server.js"
+            }
+            ```
+            (Ensure these are added within the existing `"scripts"` object in `package.json`. If the `start` script already exists from `npm init -y`, you can update it or just add the `dev` script.)
+            You can then run the development server using:
+            ```bash
+            npm run dev
+            ```
+            (Note: you'll be running this command from within the `admin_panel` directory).
+
+    *   **Choose and Install a Database Driver:**
+        *   The current `server.js` has conceptual placeholders for database interaction. You need to select a database (e.g., PostgreSQL, MySQL, MongoDB) and install its corresponding Node.js driver. For example, for PostgreSQL:
+            ```bash
+            npm install pg
+            ```
+    *   **Configure Database Connection:**
+        *   Update `admin_panel/server.js` (or preferably, use environment variables or a dedicated config file) with your actual database connection details (host, user, password, database name, port). The current code contains commented-out placeholders for this.
+    *   **Implement API Endpoints:**
+        *   Flesh out the API endpoint stubs in `admin_panel/server.js` with actual database queries and business logic. The current code provides conceptual outlines for authentication and listing categories.
+    *   **Implement Authentication and Authorization:**
+        *   Develop robust authentication (e.g., using JWT and bcrypt for password hashing) and authorization mechanisms to secure the admin panel.
+    *   **Develop Business Logic:**
+        *   Implement the core logic for all management features (events, users, bookings, etc.).
+    *   **Implement File Upload Functionality:**
+        *   Add support for uploading images (e.g., for event banners, user profile pictures if added later).
 
 **2. Android App Development:**
     *   Set up a full Android project in Android Studio.

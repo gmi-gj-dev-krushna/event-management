@@ -1,4 +1,34 @@
+// TODO: Choose and install a database driver e.g., pg (for PostgreSQL), mysql2 (for MySQL), or mongodb (for MongoDB)
+// Example: npm install pg
 // admin_panel/server.js
+
+// --- Database Connection (Conceptual - Example with PostgreSQL) ---
+/*
+// const { Pool } = require('pg'); // Uncomment when 'pg' is installed
+
+// TODO: Replace with your actual database configuration
+// Ensure these details are stored securely, e.g., in environment variables or a config file.
+const dbConfig = {
+    user: process.env.DB_USER || 'db_user_placeholder',           // Example: 'postgres'
+    host: process.env.DB_HOST || 'localhost',                     // Example: 'db.example.com'
+    database: process.env.DB_NAME || 'event_management_db',       // Example: 'events_db'
+    password: process.env.DB_PASSWORD || 'db_password_placeholder', // Store securely!
+    port: process.env.DB_PORT || 5432,                            // Default PostgreSQL port
+};
+
+const pool = new Pool(dbConfig);
+
+// Conceptual connection test - this won't run as it's commented out.
+pool.query('SELECT NOW()')
+    .then(res => {
+        console.log('Database connection successful. Current time from DB:', res.rows[0]);
+    })
+    .catch(err => {
+        console.error('Database connection error:', err.stack);
+        console.error('Please ensure the database server is running and configuration (dbConfig) is correct.');
+    });
+*/
+// --- End Database Connection ---
 
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -25,14 +55,86 @@ app.set('view engine', 'ejs'); // Or 'html' if serving static HTML or using a di
 // --- API Endpoints (Stubs) ---
 
 // Authentication
-app.post('/api/admin/login', (req, res) => {
-    // TODO: Implement admin login logic
-    res.json({ success: true, message: 'Admin login endpoint stub' });
+app.post('/api/admin/login', async (req, res) => {
+    // This is a conceptual outline. Full implementation requires error handling,
+    // security best practices (e.g., password hashing with bcrypt, input sanitization),
+    // and actual database interaction.
+
+    try {
+        const { email, password } = req.body;
+
+        // TODO: Implement proper input validation
+        // Example: Check if email and password are provided and are in valid formats.
+        if (!email || !password) {
+            return res.status(400).json({ success: false, message: 'Email and password are required.' });
+        }
+
+        // --- Conceptual Database Query ---
+        // TODO: Query database for user with the provided email.
+        // Ensure the user also has the 'admin' role.
+        // Example using 'pg' library (ensure 'pool' is configured and 'pg' is installed):
+        // const userQueryResult = await pool.query('SELECT * FROM users WHERE email = $1 AND role = \'admin\'', [email]);
+
+        // if (userQueryResult.rows.length === 0) {
+        //     // If user not found or not an admin, return 401 Unauthorized.
+        //     return res.status(401).json({ success: false, message: 'Invalid credentials or not an admin.' });
+        // }
+        // const adminUser = userQueryResult.rows[0];
+        // --- End Conceptual Database Query ---
+
+        // --- Conceptual Password Check ---
+        // TODO: Compare submitted password with the stored hashed password.
+        // This requires 'bcrypt' library: npm install bcrypt
+        // Example:
+        // const isPasswordMatch = await bcrypt.compare(password, adminUser.password_hash);
+        // if (!isPasswordMatch) {
+        //     // If password doesn't match, return 401 Unauthorized.
+        //     return res.status(401).json({ success: false, message: 'Invalid credentials.' });
+        // }
+        // --- End Conceptual Password Check ---
+
+        // --- Conceptual Session/Token Generation ---
+        // TODO: If authentication successful, create a session or generate a JWT.
+        // For JWT, you'd need 'jsonwebtoken' library: npm install jsonwebtoken
+        // Example for JWT:
+        // const token = jwt.sign(
+        //     { userId: adminUser.user_id, role: adminUser.role },
+        //     process.env.JWT_SECRET, // Ensure JWT_SECRET is set in your environment variables
+        //     { expiresIn: '1h' } // Token expiration time
+        // );
+        // --- End Conceptual Session/Token Generation ---
+
+        // If all checks pass:
+        res.json({
+            success: true,
+            message: 'Admin login successful (conceptual)',
+            token: 'dummy_jwt_token_placeholder' // Replace with actual token if using JWT
+        });
+
+    } catch (error) {
+        console.error('Login error:', error);
+        // In a real app, log more details and provide user-friendly error messages.
+        res.status(500).json({ success: false, message: 'Internal server error during login.' });
+    }
 });
 
 app.post('/api/admin/logout', (req, res) => {
-    // TODO: Implement admin logout logic
-    res.json({ success: true, message: 'Admin logout endpoint stub' });
+    // This is a conceptual outline.
+    // TODO: Implement session invalidation or JWT blocklisting if using JWT.
+    // For session-based authentication (e.g., using express-session):
+    // req.session.destroy(err => {
+    //     if (err) {
+    //         return res.status(500).json({ success: false, message: 'Could not log out.' });
+    //     }
+    //     res.clearCookie('connect.sid'); // Or your session cookie name
+    //     return res.json({ success: true, message: 'Admin logout successful (conceptual)' });
+    // });
+
+    // For JWT, blocklisting is more complex and depends on your strategy.
+    // A simple approach might be to just have the client delete the token.
+    // True server-side JWT invalidation requires a blocklist (e.g., in Redis).
+
+    res.json({ success: true, message: 'Admin logout successful (conceptual)' });
 });
 
 // Dashboard
@@ -42,7 +144,37 @@ app.get('/api/admin/dashboard/analytics', (req, res) => {
 });
 
 // Category Management
-app.get('/api/admin/categories', (req, res) => { /* TODO: Fetch all categories */ res.json({ success: true, data: [] }); });
+app.get('/api/admin/categories', async (req, res) => {
+    // This is a conceptual outline. Full implementation requires
+    // actual database interaction and robust error handling.
+    try {
+        // TODO: Query database to fetch all categories.
+        // Example using 'pg' library (ensure 'pool' is configured and 'pg' is installed):
+        // const categories = await pool.query('SELECT * FROM categories ORDER BY name ASC');
+
+        // TODO: If error during database query, return 500 Internal Server Error.
+        // Example:
+        // if (queryError) {
+        //     console.error('Database query error for categories:', queryError);
+        //     return res.status(500).json({ success: false, message: 'Failed to fetch categories.' });
+        // }
+
+        // If successful, send back the categories.
+        // Replace the hardcoded array below with actual data from categories.rows
+        res.json({
+            success: true,
+            data: [ // Replace with actual data: categories.rows (once DB query is implemented)
+                { category_id: 1, name: 'Music', description: 'Events related to music and concerts.' },
+                { category_id: 2, name: 'Technology', description: 'Tech conferences, workshops, and meetups.' },
+                { category_id: 3, name: 'Sports & Fitness', description: 'Sporting events, competitions, and fitness classes.' }
+            ]
+        });
+    } catch (error) {
+        console.error('Error fetching categories:', error);
+        // In a real app, log more details and provide user-friendly error messages.
+        res.status(500).json({ success: false, message: 'Internal server error while fetching categories.' });
+    }
+});
 app.post('/api/admin/categories', (req, res) => { /* TODO: Create new category */ res.json({ success: true, message: 'Category created' }); });
 app.put('/api/admin/categories/:id', (req, res) => { /* TODO: Update category by id */ res.json({ success: true, message: `Category ${req.params.id} updated` }); });
 app.delete('/api/admin/categories/:id', (req, res) => { /* TODO: Delete category by id */ res.json({ success: true, message: `Category ${req.params.id} deleted` }); });
